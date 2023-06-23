@@ -18,16 +18,12 @@ sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "bin/libscpcb.{}.{}.framework/libgdexample.{}.{}".format(
-            env["platform"], env["target"], env["platform"], env["target"]
-        ),
+        f'bin/libscpcb.{env["platform"]}.{env["target"]}.framework/libgdexample.{env["platform"]}.{env["target"]}',
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "bin/libscpcb.{}.{}.{}{}".format(
-            env["platform"], env["target"], env["arch_suffix"], env["SHLIBSUFFIX"]
-        ),
+        f'bin/libscpcb.{env["platform"]}.{env["target"]}.{env["arch_suffix"]}{env["SHLIBSUFFIX"]}',
         source=sources,
     )
 
